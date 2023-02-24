@@ -1,20 +1,49 @@
+/**
+ * prog
+ */
 public class prog {
-    public static void main(String[] args) {
-
-        System.out.println("\n\nЗадано выражение: 2? + ?5 = 69 . Восстановить выражение до верного равенства.");
-        int c = 0;
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                if (20 + i * 1 + j * 10 + 5 == 69) {
-                    c += 1;
-                    System.out.println(c + ") 2" + i + " + " + j + "5" + " = 69");
+    public static void main(String[] args){
+        String my_str= "4 + 5 - 2 + 3 * 10"; 
+        int result =0;
+        String zn = "";
+        String[] arr = my_str.split(" ");
+        for (int i = 0; i < arr.length; i++){
+            if (i%2==0){
+                if (zn == ""){
+                    String a = arr[i];
+                    result = Integer.parseInt(a);
                 }
+                if(zn.equals("+")){
+                    String a = arr[i];
+                    result = result + Integer.parseInt(a);
+                }
+                if(zn.equals("-")){
+                    String a = arr[i];
+                    result = result - Integer.parseInt(a);
+                }
+                if(zn.equals("*")){
+                    String a = arr[i];
+                    result = result * Integer.parseInt(a);
+                }
+                if(zn.equals("/")){
+                    String a = arr[i];
+                    if (Integer.parseInt(a) == 0){
+                        System.out.println(" В примере присутствует деление на нуль");
+                        result = 0;  
+                    }
+                    else{
+                    result = result / Integer.parseInt(a);
+                    }
+                }
+                
             }
+            if (i%2 != 0){
+                zn = arr[i]; 
+            }
+            
         }
-        System.out.println("\n");
-        if (c == 0) {
-            System.out.println("Решений нет\n");
-        }
+        System.out.println(result);
 
     }
+    
 }
